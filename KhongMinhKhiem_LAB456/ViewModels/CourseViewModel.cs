@@ -25,8 +25,4 @@ namespace KhongMinhKhiem_LAB456.ViewModels
             return DateTime.Parse(string.Format("{0} {1}", Date, Time));
         }
     }
-
-    internal class ValidTimeAttribute : Attribute
-    {
-    }
 }

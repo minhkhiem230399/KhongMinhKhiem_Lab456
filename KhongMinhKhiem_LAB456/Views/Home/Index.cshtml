@@ -1,4 +1,5 @@
-﻿@{
+﻿@model IEnumerable<KhongMinhKhiem_LAB456.Models.Course>
+@{
     ViewBag.Title = "Home Page";
 }
 
@@ -9,6 +10,14 @@
 </div>
 
 <div class="row">
+    <ul>
+        @foreach (var course in Model)
+        {
+            <li>
+                @course.DataTime - @course.Lecturer.Name
+            </li>
+        }
+    </ul>
     <div class="col-md-4">
         <h2>Getting started</h2>
         <p>

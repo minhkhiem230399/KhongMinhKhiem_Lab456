@@ -1,25 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Globalization;
 using System.Linq;
 using System.Web;
 
 namespace KhongMinhKhiem_LAB456.ViewModels
 {
-    public class FutureDate : ValicationAttribute
+    public class FutureDate : ValidationAttribute 
     {
-        public bool isValid { get; private set; }
-
-        private  bool IsValid(object value)
+        public override bool IsValid(object value)
         {
             DateTime dateTime;
-            var ssValid = DateTime.TryParseExact(Convert.ToString(value),
+            var isValid = DateTime.TryParseExact(Convert.ToString(value),
                 "dd/M/yyyy",
                 CultureInfo.CurrentCulture,
                 DateTimeStyles.None,
                 out dateTime);
-            return (isValid && dateTime > DateTime.Now);
+            return ( isValid && dateTime > DateTime.Now);
         }
-
     }
 }

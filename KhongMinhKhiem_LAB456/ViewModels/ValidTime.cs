@@ -1,25 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Globalization;
 using System.Linq;
 using System.Web;
 
 namespace KhongMinhKhiem_LAB456.ViewModels
 {
-    public class ValidTime : ValicationAttribute
+    public class ValidTime : ValidationAttribute
     {
-        private bool isValid;
-
-        private bool IsValid(object value)
+        public override bool IsValid(object value)
         {
             DateTime dateTime;
-            var ssValid = DateTime.TryParseExact(Convert.ToString(value),
-                "dd/M/yyyy",
+            var isValid = DateTime.TryParseExact(Convert.ToString(value),
+                "HH:mm",
                 CultureInfo.CurrentCulture,
                 DateTimeStyles.None,
                 out dateTime);
             return isValid;
         }
-
     }
 }
