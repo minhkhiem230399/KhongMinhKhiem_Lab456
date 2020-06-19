@@ -23,7 +23,9 @@ namespace KhongMinhKhiem_LAB456.Controllers
                 .Include(c => c.Lecturer)
                 .Include(c => c.Category)
                 .Where(c => c.DateTime > DateTime.Now);
-            var viewModel = new CourseViewModel
+
+
+            var viewModel = new CoursesViewModel
             {
                 UpcomingCourses = upcomingCourses,
                 ShowAction = User.Identity.IsAuthenticated

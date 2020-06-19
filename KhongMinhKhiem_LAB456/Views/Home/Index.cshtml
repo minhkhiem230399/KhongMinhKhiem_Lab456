@@ -1,4 +1,5 @@
-﻿@model KhongMinhKhiem_LAB456.ViewModels.CourseViewModel
+﻿
+@model KhongMinhKhiem_LAB456.ViewModels.CoursesViewModel
 @{
     ViewBag.Title = "Home Page";
 }
@@ -31,7 +32,7 @@
                         }
                     </span>
                     <span class="category">
-                        @course.Category.Name
+                        @course.Category.Name 
                     </span>
                     @if (Model.ShowAction)
                     {

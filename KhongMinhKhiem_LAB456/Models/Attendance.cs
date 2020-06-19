@@ -9,19 +9,16 @@ namespace KhongMinhKhiem_LAB456.Models
 {
     public class Attendance
     {
-        internal string AttendeeId;
-
         public Course Course { get; set; }
 
         [Key]
         [Column(Order = 1)]
         public int CourseId { get; set; }
-
         public ApplicationUser Attendee { get; set; }
 
         [Key]
         [Column(Order = 2)]
-        public string AttendanceId { get; set; }
+        public string AttendeeId { get; set; }
     }
     
 

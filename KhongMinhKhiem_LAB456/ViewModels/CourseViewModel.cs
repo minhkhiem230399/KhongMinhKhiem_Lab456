@@ -9,8 +9,7 @@ namespace KhongMinhKhiem_LAB456.ViewModels
 {
     public class CourseViewModel
     {
-        internal IQueryable<Course> upcomingCourses;
-
+       
         [Required]
         public string Place { get; set; }
         [Required]
@@ -26,7 +25,6 @@ namespace KhongMinhKhiem_LAB456.ViewModels
         {
             return DateTime.Parse(string.Format("{0} {1}", Date, Time));
         }
-        public IEnumerable<Course> UpcomingCourses { get; set; }
-        public bool ShowAction { get; set; }
+      
     }
 }
