@@ -9,40 +9,42 @@
     <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
 </div>
 
-<ul class="course">
-    @foreach (var course in Model.UpcomingCourses)
-    {
-        <li>
-            <div class="date">
-                <div class="month">
-                    @course.DateTime.ToString("MM")
+<div>
+    <ul class="course">
+        @foreach (var course in Model.UpcomingCourses)
+        {
+            <li>
+                <div class="date">
+                    <div class="month">
+                        @course.DateTime.ToString("MM")
+                    </div>
+                    <div class="day">
+                        @course.DateTime.ToString("dd")
+                    </div>
                 </div>
-                <div class="day">
-                    @course.DateTime.ToString("dd")
-                </div>
-            </div>
-            <div class="details">
-                <span class="lecturer">
-                    @course.Lecturer.Name
+                <div class="details">
+                    <span class="lecturer">
+                        @course.Lecturer.Name
+                        @if (Model.ShowAction)
+                        {
+                            <button class="btn btn-default btn-sm js-toggle-follow" data-user-id="@course.LecturerId">Follow?</button>
+                        }
+                    </span>
+                    <span class="category">
+                        @course.Category.Name
+                    </span>
                     @if (Model.ShowAction)
                     {
                         <button class="btn btn-default btn-sm js-toggle-follow" data-user-id="@course.LecturerId">Follow?</button>
                     }
-                </span>
-                <span class="category">
-                    @course.Category.Name
-                </span>
-                @if (Model.ShowAction) 
-                {
-                    <button class="btn btn-default btn-sm js-toggle-follow" data-user-id="@course.LecturerId">Going?</button>
-                }
-            </div>
-        </li>
-    }
-</ul>
-@section scripts
+                    <button data-course-id="@course.Id" class="btn btn-default btn-sm js-toggle-attendance">Going?</button>
+                </div>
+            </li>
+        }
+    </ul>
+    @section scripts
         {
-    <script>
+        <script>
             $(document).ready(function () {
                 $(".js-toggle-attendance").click(function (e) {
                     var button = $(e.target);
@@ -68,5 +70,6 @@
                     });
                 });
             });
-    </script>
-}
+        </script>
+    }
+</div>
