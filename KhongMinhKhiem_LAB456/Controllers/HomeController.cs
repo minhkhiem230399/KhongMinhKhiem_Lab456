@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Data.Entity;
 using KhongMinhKhiem_LAB456.ViewModels;
+using Microsoft.AspNet.Identity;
 
 namespace KhongMinhKhiem_LAB456.Controllers
 {
@@ -19,15 +20,29 @@ namespace KhongMinhKhiem_LAB456.Controllers
         }
         public ActionResult Index()
         {
-            var upcomingCourses = _dbContext.Courses
+            var upcommingCourses = _dbContext.Courses
                 .Include(c => c.Lecturer)
                 .Include(c => c.Category)
                 .Where(c => c.DateTime > DateTime.Now);
 
+            var userId = User.Identity.GetUserId();
+
+            var follows = _dbContext.Followings
+                .Include(a => a.Followee)
+                .Include(a => a.Follower)
+                .Where(a => a.FollowerId == userId)
+                .ToList();
+
+
+            var attend = _dbContext.Attendances
+                .Include(a => a.Attendee)
+                .Include(a => a.Course)
+                .Where(a => a.AttendeeId == userId)
+                .ToList();
 
             var viewModel = new CoursesViewModel
             {
-                UpcomingCourses = upcomingCourses,
+                UpcommingCourses = upcommingCourses,
                 ShowAction = User.Identity.IsAuthenticated
             };
             return View(viewModel);

@@ -9,6 +9,8 @@ namespace KhongMinhKhiem_LAB456.Models
     public class Course
     {
         public int Id { get; set; }
+        
+        public bool IsCanceled { get; set; }
         public ApplicationUser Lecturer { get; set; }
         [Required]
         public string LecturerId { get; set; }
@@ -20,6 +22,6 @@ namespace KhongMinhKhiem_LAB456.Models
         [Required]
         public byte CategoryId { get; set; }
    
-        public bool IsCanceled { get; set; }
+       
     }
 }
